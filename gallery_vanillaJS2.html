@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic" />
+    <style>
+        .gallery {
+            position: absolute;
+            z-index: 1;
+            left: -800px;
+            top: 120px;
+            width: 800px;
+            height: 200px;
+            list-style: none;
+            transition: left 0.5s ease-out;
+        }
+
+        .gallery li {
+            float: left;
+            width: 200px;
+            height: 200px;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+
+        .gallery li img {
+            width: 200px;
+        }
+
+        .gallery.active {
+            left: 0;
+        }
+
+        .gallery li.over {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        /*
+        #tab을 클릭하면 .gallery에 active 클래스를 추가한다.
+        #tab을 클릭하면 gallery open ---> gallery close
+        다시 클릭하면 gallery close ---> gallery open
+
+        .gallery li에 마우스를 올리면 over 클래스를 추가하고, 내리면 over 클래스를 제거한다.
+        */
+        window.addEventListener('load', function () {
+            const gallery = document.querySelector(".gallery");
+            // const prependBtn = document.getElementById("prepend");
+            // const appendBtn = document.getElementById("append");
+
+            // prependBtn.addEventListener("click", function () {
+            //     const firstChild = gallery.firstElementChild;
+            //     const lastChild = gallery.lastElementChild;
+            //     const newNode = lastChild.cloneNode(true);
+            //     gallery.removeChild(lastChild);
+            //     gallery.insertBefore(newNode, firstChild);
+
+            // });
+            // appendBtn.addEventListener("click", function () {
+            //     const firstChild = gallery.firstElementChild;
+            //     const lastChild = gallery.lastElementChild;
+            //     const newNode = firstChild.cloneNode(true);
+            //     gallery.removeChild(firstChild);
+            //     gallery.appendChild(firstChild);
+            // });
+
+            let status = "open"; // 현재 상태 지정
+            let tab = document.querySelector("#tab");
+            var galleryList = document.querySelectorAll(".gallery li");
+
+            tab.addEventListener("click", function (e) {
+                if (status == "closed") {
+                    status = "open";
+                    e.target.innerText = "gallery close";
+                    gallery.classList.add("active");
+                } else {
+                    status = "closed";
+                    e.target.innerText = "gallery open";
+                    gallery.classList.remove("active");
+                }
+
+                console.log(status);
+            });
+
+            for (let i = 0; i < galleryList.length; i++) {
+                galleryList[i].addEventListener("mouseenter", function (e) {
+                    // console.log(e.target);
+                    e.target.classList.add("over");
+                });
+                galleryList[i].addEventListener("mouseleave", function (e) {
+                    // console.log(e.target);
+                    e.target.classList.remove("over");
+                })
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic java script gallery</h1>
+    <div class="container">
+        <button id="prepend" title="prepend">prepend</button>
+        <button id="append" title="append">append</button>
+        <button id="tab">gallery open</button>
+        <ul class="gallery">
+            <li><img src="images/img1.jpg" alt="img1"></li>
+            <li><img src="images/img2.jpg" alt="img2"></li>
+            <li><img src="images/img3.jpg" alt="img3"></li>
+            <li><img src="images/img4.jpg" alt="img4"></li>
+        </ul>
+    </div>
+</body>
+
+</html>
