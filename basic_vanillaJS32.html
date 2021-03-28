@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            position: absolute;
+            left: 40px;
+            top: 150px;
+            width: 40px;
+            height: 40px;
+            background-color: #8ac007;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .effect {
+            transform: scale(2);
+        }
+
+        .wrapper>a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: rgba(255, 255, 0, .2);
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const ball = document.querySelector(".ball");
+            const btn = document.querySelector("#queue");
+            const targetX = 400;
+            let x = ball.offsetLeft;
+
+            btn.addEventListener("click", function () {
+                // const timer = setInterval(function () {
+                //     if (x < targetX) {
+                //         x += 10;
+                //     } else {
+                //         x = targetX;
+                //         clearInterval(timer);
+                //     }
+
+                //     ball.style.left = x + "px";
+                // }, 10);
+                animate1(ball, x, targetX);
+            })
+
+            function animate1(target, startx, targetx) {
+                let timer = setInterval(function () {
+                    if (startx < targetx) {
+                        startx += 10;
+                    } else {
+                        startx = targetx;
+                        clearInterval(timer);
+                    }
+                    target.style.left = startx + "px";
+                }, 10);
+            }
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <h1>java script event</h1>
+    <div class="container">
+        <button id="queue">queue</button>
+        <div class="ball"></div>
+        <div class="wrapper">
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+
+</html>

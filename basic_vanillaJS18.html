@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            margin-top: 35px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const cont = document.querySelector(".container");
+            console.log(cont.hasChildNodes);
+
+            const htmlLi = document.querySelector(".html");
+            htmlLi.innerText = "HTML5 Tutorial";
+            console.log(htmlLi.classList);
+            // htmlLi.classList.add("selected");
+            // htmlLi.classList.remove("html");
+
+            htmlLi.addEventListener("click", function (e) {
+                const flag = e.target.classList.toggle("selected");
+                console.log("flag : " + flag);
+            })
+
+            const cssLi = document.querySelector(".css");
+            cssLi.innerHTML = "<span class='subject'>CSS Tutorial</span>";
+
+            const xmlLi = document.createElement("li");
+            xmlLi.setAttribute("class", "xml");
+            xmlLi.innerText = "XML";
+
+            const tutorial = document.querySelector("#tutorial");
+            //tutorial.appendChild(xmlLi);
+            tutorial.insertBefore(xmlLi, cssLi);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <ul id="tutorial">
+            <li class="html">HTML5</li>
+            <li class="css">CSS</li>
+            <li class="css5">CSS5</li>
+            <li class="js">JavaScript</li>
+            <li class="jquery">jQuery</li>
+        </ul>
+        <p class="portfolio">Portfolio</p>
+    </div>
+
+</body>
+
+</html>

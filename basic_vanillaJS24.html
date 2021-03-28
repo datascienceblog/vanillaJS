@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            position: absolute;
+            left: 40px;
+            top: 150px;
+            width: 40px;
+            height: 40px;
+            background-color: #8ac007;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .effect {
+            transform: scale(2);
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const ball = document.querySelector(".ball");
+            const body = document.body;
+            let x = ball.offsetLeft;
+            let y = ball.offsetTop;
+
+            console.log(x + " : " + y);
+
+            // ball.addEventListener("click", function (e) {
+            //     e.target.classList.add("effect", "status");
+            // });
+
+            // const btnList = document.querySelectorAll("button");
+            // for (let i = 0; i < btnList.length; i++) {
+            //     btnList[i].addEventListener("click", function (e) {
+            //         switch (e.target.id) {
+            //             case "left":
+            //                 x -= 40;
+            //                 break;
+            //             case "right":
+            //                 x += 40;
+            //                 break;
+            //             case "top":
+            //                 y -= 40;
+            //                 break;
+            //             case "bottom":
+            //                 y += 40;
+            //                 break;
+            //             default:
+            //                 break;
+            //         }
+            //     });
+            // }
+
+            body.addEventListener("keydown", function (e) {
+                const code = e.keyCode;
+                console.log("code: " + code);
+
+                switch (code) {
+                    case 37:
+                        x -= 40;
+                        break;
+                    case 39:
+                        x += 40;
+                        break;
+                    case 38:
+                        y -= 40;
+                        break;
+                    case 40:
+                        y += 40;
+                        break;
+                    default:
+                        break;
+                }
+
+                ball.style.left = x + "px";
+                ball.style.top = y + "px";
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h1>java script event</h1>
+    <div class="container">
+        <button id="left">left</button>
+        <button id="right">right</button>
+        <button id="top">top</button>
+        <button id="bottom">bottom</button>
+        <div class="ball"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            position: absolute;
+            left: 40px;
+            top: 150px;
+            width: 40px;
+            height: 40px;
+            background-color: #8ac007;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .effect {
+            transform: scale(2);
+        }
+
+        .wrapper>a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: rgba(255, 255, 0, .2);
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const wrapper = document.querySelector(".wrapper");
+
+            wrapper.addEventListener("click", function (e) {
+                console.log(".wrapper clicked!!");
+            });
+            wrapper.children[0].addEventListener("click", function (e) {
+                // console.log(".wrapper a clicked!!");
+                e.target.classList.add("active");
+            });
+
+        });
+
+        window.addEventListener("resize", function () {
+            const cont = document.querySelector(".container");
+            let info = "";
+            info += "inner width: " + window.innerWidth + "<br><br>";
+            info += "inner height: " + window.innerHeight + "<br><br>";
+            info += "outer width: " + window.outerWidth + "<br><br>";
+            info += "outer height: " + window.outerHeight + "<br><br>";
+            info += "page xoffset: " + window.pageXOffset + "<br><br>";
+            info += "page yoffset: " + window.pageYOffset + "<br><br>";
+
+            cont.innerHTML = info;
+        })
+    </script>
+</head>
+
+<body>
+    <h1>java script event</h1>
+    <div class="container">
+        <div class="wrapper">
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+
+</html>
