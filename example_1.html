@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            margin-top: 35px;
+        }
+
+        img [alt=lion] {
+            display: block;
+            margin-top: 50px;
+            width: 250px;
+            height: 250px;
+            transition: all 0.4s;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            let y = 50;
+            let topBtn = document.querySelector("#top");
+            let bottomBtn = document.querySelector("#bottom");
+            let lion = document.querySelector(".lion");
+
+            topBtn.addEventListener("click", function () {
+                y -= 100;
+                lion.style.marginTop = y + "px";
+            })
+            bottomBtn.addEventListener("click", function () {
+                y += 100;
+                lion.style.marginTop = y + "px";
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic java script gallery</h1>
+    <div class="container">
+        <button id="top" title="top">top</button>
+        <button id="bottom" title="bottom">bottom</button>
+        <img src="images/lion.jpg" alt="lion" class="lion">
+    </div>
+</body>
+
+</html>
