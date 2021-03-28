@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic"/>
+    <style>
+        .gallery img {
+            width: 250px;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            const gallery = document.querySelector(".gallery");
+            const prependBtn = document.getElementById("prepend");
+            const appendBtn = document.getElementById("append");
+            
+            prependBtn.addEventListener("click", function() {
+                const firstChild = gallery.firstElementChild;
+                const lastChild = gallery.lastElementChild;
+                const newNode= lastChild.cloneNode(true);
+                gallery.removeChild(lastChild);
+                gallery.insertBefore(newNode, firstChild);
+
+            });
+            appendBtn.addEventListener("click", function() {
+                const firstChild = gallery.firstElementChild;
+                const lastChild = gallery.lastElementChild;
+                const newNode= firstChild.cloneNode(true);
+                gallery.removeChild(firstChild);
+                gallery.appendChild(firstChild);            
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 class="title">basic java script gallery</h1>
+    <div class="container">
+        <button id="prepend" title="prepend">prepend</button>
+        <button id="append" title="append">append</button>
+        <div class="gallery">
+            <img src="images/img1.jpg" alt="img1">
+            <img src="images/img2.jpg" alt="img1">
+            <img src="images/img3.jpg" alt="img1">
+            <img src="images/img4.jpg" alt="img1">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic"/>
+    <style>
+
+    </style>
+    <script>
+        // window.addEventListener('load', (event) => {
+        //     console.log('page is fully loaded'); 
+        //     console.log("---------------");
+        //     let liList = document.querySelectorAll("#tutorial li");
+
+        //     for (let i=0; i<liList.length; i++) {
+        //         liList[i].addEventListener("click", function(e) {
+        //             // let ul=e.target.parentNode;
+        //             let ul=e.target.parentElement;
+        //             ul.style.backgroundColor= "#666";
+        //             // ul.style.fontColor= "#777";
+        //         })
+        //     }
+
+        //     var bodyNode = document.querySelector("body");
+        //     console.log(bodyNode.parentNode);
+        //     console.log(bodyNode.parentElement);
+        // }); 
+        window.addEventListener('load', function() {
+            // let cont = document.querySelector(".container");
+            // let contChildren = cont.children;
+
+            // for (var i=0; i<contChildren.length; i++) {
+            //     console.log(contChildren[i]);
+
+            //     if (contChildren[i].tagName == "P") {
+            //         contChildren[i].style.backgroundColor = "#0000FF";
+            //     }
+            // }
+
+            // console.log('page is fully loaded....'); 
+            // console.log("---------------");
+
+            // var bodyNode = document.querySelector("body");
+            // console.log(bodyNode);
+            // console.log(bodyNode.firstChild);
+            // console.log(bodyNode.firstElementChild);
+            // // console.log(bodyNode.parentElement);
+
+            // var liList = document.querySelectorAll("#tutorial li");
+            // console.log(liList);
+
+            // for (var i=0; i<liList.length; i++) {
+            //     liList[i].addEventListener('click', function(e) {
+            //         let ul=e.target.parentNode;
+            //         // var ul=e.target.parentElement;
+            //         ul.style.backgroundColor= "#666";
+            //         // ul.style.fontColor= "#777";
+            //     })
+            // }
+
+            // const container = document.querySelector(".container");
+            // const contChildren = container.children;
+            // console.log(container);
+            // console.log(contChildren);
+            // for (var child in contChildren) {
+                
+            //     if (child.tagName == "P") {
+            //         child.style.backgroundColor = "#FF0000";
+            //     }
+            // }
+            var tutorial = document.querySelector("#tutorial");
+            var ajax = document.createElement("li");
+            ajax.setAttribute("class","ajax");
+            ajax.innerText = "AJAX";
+            tutorial.appendChild(ajax);
+
+            console.log("---- loaded ----");
+        });
+    </script>
+</head>
+<body>
+    <h1 class="title">basic java script</h1>
+    <div class="container">
+        <button id="prepend" title="prepend">prepend</button>
+        <button id="append" title="append">append</button>
+        <p class="prestudy">pre study</p>
+        <ul id="tutorial">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>portfolio</li>
+        </ul>
+        <p id="portfolio">Portfolio</p>
+    </div>
+</body>
+</html>
