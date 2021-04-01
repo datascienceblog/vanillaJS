@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container li {
+            display: inline-block;
+        }
+
+        .container li a {
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .container li a:focus {
+            outline: 2px solid #09f;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const popupOpenBtn = document.querySelector(".pop");
+            const popup = document.querySelector(".layer_pop");
+            const dim = document.querySelector(".transparent");
+            const popupList = popup.children;
+
+            for (let i = 0; popupList.length; i++) {
+
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic :: jQuery</h1>
+    <div class="container">
+        <div class="pop">
+        </div>
+        <div class="layer_pop">
+            <div class="pop_title">
+                컨텐츠 회원가입
+                <a href="" class="close"><img src="images/btn_close.gif" alt="close"></a>
+            </div>
+            <div class="pop_contents">
+                <div class="content_info">
+                    <div class="pop_sub_title">
+                        <p class="entitle"><img src="images/tif_self.gif" alt="본인인증"></p>
+                    </div>
+                    <div class="pop_info">
+                        <p class="entitle2"><img src="images/tif_self2.gif" alt="테스트"></p>
+                    </div>
+                </div>
+            </div>>
+        </div>
+    </div>
+</body>
+
+</html>

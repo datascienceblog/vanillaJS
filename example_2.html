@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .controller {
+            padding-top: 20px;
+        }
+
+        .controller li {
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .controller li:first-child {
+            margin-left: 0;
+        }
+
+        .controller li a {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: grey;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .controller li.on a {
+            width: 50px;
+            background-color: #8ac007;
+        }
+
+        .picture img {
+            width: 100px;
+        }
+
+        .picture ul {
+            width: 100px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            let targetX = 0;
+            gallery = document.querySelector("picture ul");
+            const liList = document.querySelectorAll(".controller li");
+
+            for (let i = 0; i < liList.length; i++) {
+                liList[i].index = i;
+                let n = 0;
+                liList[i].addEventListener("click", function (e) {
+                    e.preventDefault();
+                    n = e.currentTarget.index;
+                    console.log("i:" + i + ", n:" + n);
+
+                    for (let j = 0; j < liList.length; j++) {
+                        if (j == n) {
+                            liList[j].classList.add("on");
+                        } else {
+                            liList[j].classList.remove("on");
+                        }
+
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic java script gallery</h1>
+    <div class="container">
+        <ul class="controller">
+            <li class="on"><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

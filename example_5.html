@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav>ul {
+            height: 40px;
+            overflow: hidden;
+            background-color: #fff;
+            transition: height 0.4s ease-out;
+        }
+
+        nav>ul.over {
+            height: 200px;
+        }
+
+        nav>ul>li {
+            position: relative;
+            float: left;
+            width: 140px;
+            height: 40px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        nav>ul>li>a {
+            display: block;
+            width: 100%;
+            line-height: 40px;
+            text-decoration: none;
+            background-color: #eaeaea;
+            color: #666;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        nav>ul>li:hover>a,
+        nav>ul>li:focus>a,
+        nav>ul>li>a.over {
+            font-weight: 600;
+            background-color: #8ac007;
+            color: #fff;
+        }
+
+        nav .sub {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            padding-top: 6px;
+            width: 100%;
+            border-left: 1px solid #f4f4f4;
+        }
+
+        nav>ul>li:first-child .sub {
+            border-left: none;
+        }
+
+        nav .sub li a {
+            display: block;
+            padding: 11px;
+            text-decoration: none;
+            color: #666;
+            background-color: #fff;
+        }
+
+        nav .sub li a:hover,
+        nav .sub li a:focus {
+            background-color: #f8f8f8;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            let n = 0;
+            const depth1Ul = document.querySelector("nav > ul");
+            const depth1Li = document.querySelectorAll("nav > ul > li");
+            const depth2Ul = document.querySelectorAll("nav ul ul");
+            const depth2Li = document.querySelectorAll("nav > ul > ul > li");
+
+            for (let i = 0; i < depth1Li.length; i++) {
+                depth1Li[i].addEventListener("mouseenter", function (e) {
+                    depth1Ul.classList.add("over");
+                });
+                depth1Li[i].addEventListener("mouseleave", function (e) {
+                    depth1Ul.classList.remove("over");
+                });
+                // console.log(depth1Li[i].childNodes);
+                // console.log(depth1Li[i].children);
+
+                const depth1 = depth1Li[i].children[0];
+                depth1.addEventListener("focusin", function (e) {
+                    e.target.classList.add("over");
+                });
+                if (i == 0) {
+                    depth1.addEventListener("focusin", function (e) {
+                        console.log("focusin !!");
+                        depth1Ul.classList.add("over");
+                    });
+                }
+                if (i == (depth1Li.length - 1)) {
+                    const lastLi = depth1Li[i];
+                    const lastLiLi = lastLi.children[1].children;
+                    console.log(lastLi);
+                    console.log(lastLiLi);
+
+                    for (let k = 0; k < lastLiLi.length; k++) {
+                        if (k == (lastLiLi.length - 1)) {
+                            console.log(lastLiLi[k]);
+                            lastLiLi[k].addEventListener("focusout", function (e) {
+                                depth1Ul.classList.remove("over");
+                                console.log("focusout event !!");
+                            });
+                        }
+                    }
+                }
+            }
+            for (let j = 0; j < depth2Ul.length; j++) {
+                const depth2Li = depth2Ul[j].children;
+
+                for (var m = 0; m < depth2Li.length; m++) {
+                    depth2Li[m].index = m;
+
+                    if (m == (depth2Li.length - 1)) {
+                        depth2Li[m].addEventListener("focusout", function (e) {
+                            const link = e.currentTarget.parentElement.previousElementSibling;
+                            link.classList.remove("over");
+                        });
+                    }
+                }
+            }
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic java script gallery</h1>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">main1</a>
+                    <ul class="sub">
+                        <li><a href="#">sub11</a></li>
+                        <li><a href="#">sub12</a></li>
+                        <li><a href="#">sub13</a></li>
+                        <li><a href="#">sub14</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">main2</a>
+                    <ul class="sub">
+                        <li><a href="#">sub21</a></li>
+                        <li><a href="#">sub22</a></li>
+                        <li><a href="#">sub23</a></li>
+                        <li><a href="#">sub24</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">main3</a>
+                    <ul class="sub">
+                        <li><a href="#">sub31</a></li>
+                        <li><a href="#">sub32</a></li>
+                        <li><a href="#">sub33</a></li>
+                        <li><a href="#">sub34</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">main4</a>
+                    <ul class="sub">
+                        <li><a href="#">sub41</a></li>
+                        <li><a href="#">sub42</a></li>
+                        <li><a href="#">sub43</a></li>
+                        <li><a href="#">sub44</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container li {
+            display: inline-block;
+        }
+
+        .container li a {
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .container li a:focus {
+            outline: 2px solid #09f;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            const liList = document.querySelectorAll(".container li");
+            const listFirstA = liList[0].children[0];
+            console.log(listFirstA);
+
+            const indexArray = new Array(4, 3, 2, 1);
+
+            for (let i = 0; i < liList.length; i++) {
+                liList[i].children[0].setAttribute("tabindex", indexArray[i]);
+            }
+
+            liList[3].children[0].focus();
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic :: jQuery</h1>
+    <div class="container">
+        <ul>
+            <li><a href="#" class="second">link2</a></li>
+            <li><a href="#" class="third">link3</a></li>
+            <li><a href="#" class="fourth">link4</a></li>
+            <li><a href="#" class="first">link1</a></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
