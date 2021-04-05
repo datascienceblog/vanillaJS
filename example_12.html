@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: #8ac007;
+            border-radius: 50%;
+        }
+    </style>>
+    <script>
+
+        let targetX = 0;
+        // 동작을 제어하는 변수
+        let moving = false;
+        let currentX = 0;
+
+        window.addEventListener("load", function () {
+            const body = document.body;
+            // mousewheel event, keydown event
+            // const body = document.getElementsByTagName("body")[0];
+            let num = 0;
+
+            body.addEventListener("wheel", function (e) {
+                if (moving) return;
+
+                // console.log(e);
+                const delta = e.wheelDeltaY;
+
+                if (delta > 0) {
+                    // console.log("up");
+                    if (num > 0) num--;
+
+                } else {
+                    // console.log("down");
+                    if (num < 20) num++;
+                }
+
+                moving = true; // wheel 동작 구현의 시작입니다.
+                targetX = 50 * num;
+                // ball.style.marginLeft = targetX + "px";
+                moveCategory();
+            });
+
+            body.addEventListener("keydown", function (e) {
+                switch (e.keyCode) {
+                    case 38: // up
+                        if (num > 0) num--;
+                        break;
+                    case 40: // down
+                        if (num < 20) num++;
+                        break;
+                    default:
+                        break;
+                }
+
+                moving = true; // keyboard 동작 구현의 시작입니다.
+                targetX = 50 * num;
+
+                moveCategory();
+            });
+
+        });
+
+        function moveCategory() {
+            const ball = document.querySelector(".ball");
+
+            const aniTimer = setInterval(function () {
+                if (targetX > currentX) { // 우측으로의 이동을 의미하고 있습니다.
+                    if (Math.abs(targetX - currentX) > 5) {
+                        currentX += 5;
+                    } else {
+                        currentX = targetX;
+                        clearInterval(aniTimer);
+                        moving = false;
+                    }
+                } else { // 좌측으로의 이동을 의미하고 있습니다.
+                    if (Math.abs(targetX - currentX) > 5) {
+                        currentX -= 5;
+                    } else {
+                        currentX = targetX;
+                        clearInterval(aniTimer);
+                        moving = false;
+                    }
+                }
+
+                ball.style.marginLeft = targetX + "px";
+            }, 5);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 class="title">basic :: jQuery example</h1>
+    <div class="container">
+        <div class="ball"></div>
+    </div>
+</body>
+
+</html>
